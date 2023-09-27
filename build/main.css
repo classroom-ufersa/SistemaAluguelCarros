@@ -1,0 +1,140 @@
+@charset "UTF-8";
+body {
+  background-color: #F3F4F6;
+}
+
+#reservar .data {
+  margin-right: 16px;
+}
+#reservar .form-group,
+#reservar h2 {
+  margin-bottom: 16px;
+}
+#reservar button {
+  background-color: #1C252D;
+  border: none;
+  transition: ease-in 0.2s;
+}
+#reservar button:hover {
+  background-color: #354655;
+}
+#reservar .form-group-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.telas {
+  width: 100%;
+  background-color: #FCFCFC;
+  border-radius: 16px;
+  padding: 32px;
+  margin-left: 30px;
+}
+.telas .card-title {
+  font-size: 20px;
+  background-color: #F3F4F6;
+  padding: 10px 34px;
+  border-radius: 8px 8px 0px 0px;
+  margin: 0;
+}
+.telas .card {
+  border: none;
+}
+.telas .card-text {
+  height: 142px;
+  display: flex;
+  padding: 0px 18px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 8px 8px;
+  background: #1C252D;
+  color: #EAECED;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+}
+.telas .card-text span {
+  font-size: 32px;
+}
+.telas .card-body {
+  padding: 0;
+}
+.telas .ultimasReservas,
+.telas .proximasReservas {
+  margin-top: 32px;
+}
+.telas .ultimasReservas h2,
+.telas .proximasReservas h2 {
+  font-size: 20px;
+}
+.telas .table {
+  font-size: 12px;
+  margin: 0;
+  --bs-table-bg: transparent;
+}
+.telas .table th:nth-child(1) {
+  padding-left: 0;
+}
+.telas .proximasReservas {
+  margin-bottom: 0;
+}
+.telas a:active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.container {
+  position: relative;
+}
+
+.form-inline {
+  width: 80%;
+}
+
+button.close {
+  border: none;
+  background-color: transparent;
+}
+
+.btn-primary {
+  background-color: #1C252D !important;
+  border-color: transparent !important;
+}
+
+#nav-menu {
+  width: 17%;
+  padding: 10px;
+}
+#nav-menu img {
+  margin-bottom: 16px;
+}
+#nav-menu #navbarNav {
+  width: 100%;
+}
+#nav-menu .navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: sticky;
+  /* Fixa o menu na posição */
+  top: 58px;
+  /* Define a posição no topo */
+}
+#nav-menu .navbar-nav {
+  padding: 10px 0;
+  width: 100%;
+}
+#nav-menu .navbar-nav li {
+  margin-bottom: 30px;
+}
+#nav-menu .navbar-nav p {
+  font-size: 12px;
+}
+#nav-menu .active {
+  background-color: #E6E7EB;
+  border-radius: 4px;
+}
+
+/*# sourceMappingURL=main.css.map */

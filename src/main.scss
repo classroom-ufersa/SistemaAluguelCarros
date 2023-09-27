@@ -1,0 +1,161 @@
+body {
+    background-color: #F3F4F6;
+}
+
+#reservar {
+    .data {
+        margin-right: 16px;
+    }
+
+    .form-group,
+    h2 {
+        margin-bottom: 16px;
+    }
+
+    button {
+
+        background-color: #1C252D;
+        border: none;
+        transition: ease-in 0.2s;
+    }
+
+    button:hover {
+        background-color: #354655;
+    }
+
+    .form-group-button {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.telas {
+    width: 100%;
+    background-color: #FCFCFC;
+    border-radius: 16px;
+    padding: 32px;
+    margin-left: 30px;
+
+    .card-title {
+        font-size: 20px;
+        background-color: #F3F4F6;
+        padding: 10px 34px;
+        border-radius: 8px 8px 0px 0px;
+        margin: 0;
+    }
+
+    .card {
+        border: none;
+    }
+
+    .card-text {
+        height: 142px;
+        display: flex;
+        padding: 0px 18px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px 0px 8px 8px;
+        background: #1C252D;
+        color: #EAECED;
+        font-size: 50px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+
+        span {
+            font-size: 32px;
+        }
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .ultimasReservas,
+    .proximasReservas {
+        margin-top: 32px;
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+
+    .table {
+        font-size: 12px;
+        margin: 0;
+        --bs-table-bg: transparent;
+
+        th:nth-child(1) {
+            padding-left: 0;
+        }
+    }
+
+    .proximasReservas {
+        margin-bottom: 0;
+    }
+
+    a:active {
+        background-color: #007bff;
+        color: #fff;
+    }
+}
+
+.container {
+    position: relative;
+}
+
+.form-inline {
+    width: 80%;
+}
+
+button.close {
+    border: none;
+    background-color: transparent;
+}
+
+.btn-primary{
+    background-color: #1C252D !important;
+    border-color: transparent !important;
+}
+
+#nav-menu {
+    width: 17%;
+    padding: 10px;
+
+    img {
+        margin-bottom: 16px;
+    }
+
+    #navbarNav {
+        width: 100%;
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        position: sticky;
+        /* Fixa o menu na posição */
+        top: 58px;
+        /* Define a posição no topo */
+    }
+
+    .navbar-nav {
+        padding: 10px 0;
+        width: 100%;
+
+        li {
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+    }
+
+    .active {
+        background-color: #E6E7EB;
+        border-radius: 4px;
+    }
+}

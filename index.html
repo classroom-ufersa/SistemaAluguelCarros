@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./build/main.css">
+</head>
+
+<body>
+    <div class="d-flex container mt-5 mb-5">
+        <section id="nav-menu" class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <img src="./build/img/GO rent a car.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="mostrarHome" href="#home"><i class="bi bi-house me-2"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarReservar" href="#reservar"><i
+                                    class="bi bi-person-add me-2"></i>Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarCarros" href="#carros"><i
+                                    class="bi bi-car-front me-2"></i>Carros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarClientes" href="#clientes"><i
+                                    class="bi bi-people me-2"></i>Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <div class="w-100">
+            <section id="home" class="shadow-lg telas">
+                <div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Faturamento 30 dias</h5>
+                                    <p class="card-text">R$ 23.232<span>,23</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card shadow ">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Carros disponíveis</h5>
+                                    <p class="card-text">30 de 120</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card shadow ">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">Total de Clientes</h5>
+                                    <p class="card-text">845</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ultimasReservas">
+                    <h2>Ultimas reservas</h2>
+                    <table class="table" id="tabelaUltimasReservas">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Carro</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">CNH</th>
+                                <th scope="col">Valor da resrva</th>
+                                <th scope="col">Data devolução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="proximasReservas">
+                    <h2>Reservas próximas do fim</h2>
+                    <table class="table" id="tabelaReservasFim">
+                        <thead>
+                            <tr>
+                                <th scope="col">Data</th>
+                                <th scope="col">Carro</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">CNH</th>
+                                <th scope="col">Valor da resrva</th>
+                                <th scope="col">Data devolução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10/02</th>
+                                <td>Argo</td>
+                                <td>QHG1Q</td>
+                                <td>João</td>
+                                <td>312341241241</td>
+                                <td>1,504,23</td>
+                                <td>15/02</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="reservar" class="shadow-lg telas" style="display: none;">
+                <div>
+                    <h2>Reservar carro</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="cliente">Cliente:</label>
+                            <input type="text" class="form-control" id="clienteReservar" placeholder="Nome do Cliente"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="carro">Carro:</label>
+                            <input type="text" class="form-control" id="carroReservar" placeholder="Modelo do carro"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="placa">Placa:</label>
+                            <input type="text" class="form-control" id="placaReservar" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="marca">Marca:</label>
+                            <input type="text" class="form-control" id="marcaReservar" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="cor">Cor:</label>
+                            <input type="text" class="form-control" id="corReservar" readonly>
+                        </div>
+                        <div class="form-group d-flex">
+                            <div class="data">
+                                <label for="dataLocacao">Data da Locação:</label>
+                                <input type="date" class="form-control" id="dataLocacao" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataEntrega">Data da Entrega:</label>
+                                <input type="date" class="form-control" id="dataEntrega" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorReserva">Valor total da reserva:</label>
+                            <h3>R$ 1.000,42</h3>
+                        </div>
+                        <div class="form-group-button">
+                            <button type="submit" class="btn btn-primary">Finalizar reserva</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section id="carros" class="shadow-lg telas" style="display: none;">
+                <h2 class="mb-3">Carros</h2>
+                <div class="d-flex justify-content-between">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Pesquisar">
+                    </form>
+                    <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal" data-target="#myModal">
+                        Cadastrar Carro
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="carroForm">
+                                        <div class="form-group">
+                                            <label for="nome">Marca:</label>
+                                            <input type="text" class="form-control" id="marca">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sobrenome">Modelo:</label>
+                                            <input type="text" class="form-control" id="modelo">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cnh">Placa:</label>
+                                            <input type="text" class="form-control" id="placa">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dataNascimento">Ano:</label>
+                                            <input type="number" class="form-control" id="ano">
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="enviarCarro">Enviar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                                <!-- Rodapé do Modal -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="searchResults"></div>
+                <div class="proximasReservas">
+                    <h2>Todos os carros</h2>
+                    <table class="table" id="tabelaCarros">
+                        <thead>
+                            <tr>
+                                <th scope="col">Marca/Modelo</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Ano</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Valor da reserva</th>
+                                <th scope="col">Total de dias</th>
+                                <th scope="col">Data devolução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </table>
+
+
+                </div>
+            </section>
+            <section id="clientes" class="shadow-lg telas" style="display: none;">
+                <h2 class="mb-3">Clientes</h2>
+                <div class="d-flex justify-content-between">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="text" id="searchInput" placeholder="Pesquisar">
+                    </form>
+                    <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal"
+                        data-target="#moldalClientes">
+                        Cadastrar Carro
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="moldalClientes">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="meuFormulario">
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" class="form-control" id="nome">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sobrenome">Sobrenome:</label>
+                                            <input type="text" class="form-control" id="sobrenome">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cnh">CNH:</label>
+                                            <input type="text" class="form-control" id="cnh">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" id="enviarCliente">Enviar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="searchResults"></div>
+                <div class="proximasReservas">
+                    <h2>Todos os Clientes</h2>
+                    <table class="table" id="tabelaCliente">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">CNH</th>
+                                <th scope="col">Possui Reserva?</th>
+                                <th scope="col">Carro</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Valor da resrva</th>
+                                <th scope="col">Data devolução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script type="module" src="./src/scripts/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Code injected by live-server -->
+</body>
+
+</html>
