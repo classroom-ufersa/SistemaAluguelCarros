@@ -33,10 +33,10 @@ app.post('/adicionarCliente', (req, res) => {
     const nomeComleto = `${nome} ${sobrenome}`;
                 
     // Formatar os dados em uma string de texto
-    const carroText = `${id}, ${nomeComleto}, ${cnh}, ${possuiReserva}\n`;
+    const clienteText = `${id}, ${nomeComleto}, ${cnh}, ${possuiReserva}\n`;
 
     // Salvar os dados no arquivo de texto
-    fs.appendFile(arquivoCliente, carroText, (err) => {
+    fs.appendFile(arquivoCliente, clienteText, (err) => {
         if (err) {
             console.error(err);
             res.status(500).send('Erro ao salvar os dados do carro.');
