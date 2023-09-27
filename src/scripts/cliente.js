@@ -1,15 +1,15 @@
-export class Cliente {
-  constructor(id, nome, cnh, possuiReserva, carro, valorReserva, dataDevolucao) {
-    this.id = id;
-    this.nome = nome;
-    this.sobrenome = sobrenome;
-    this.cnh = cnh;
-    this.possuiReserva = 'Não'; // Booleano indicando se o cliente possui reserva
-    this.carro = carro; // Carro associado ao cliente (pode ser nulo se não houver reserva)
-    this.valorReserva = valorReserva; // Valor da reserva (pode ser nulo se não houver reserva)
-    this.dataDevolucao = dataDevolucao; // Data de devolução (pode ser nulo se não houver reserva)
+  export class Cliente {
+    constructor(id, nome,sobrenome, cnh, carro, valorReserva, dataDevolucao) {
+      this.id = id;
+      this.nome = nome;
+      this.sobrenome = sobrenome;
+      this.cnh = cnh;
+      this.possuiReserva = 'Não'; 
+      this.carro = carro; // Carro associado ao cliente (pode ser nulo se não houver reserva)
+      this.valorReserva = valorReserva; // Valor da reserva (pode ser nulo se não houver reserva)
+      this.dataDevolucao = dataDevolucao; // Data de devolução (pode ser nulo se não houver reserva)
+    }
   }
-}
 
 export class listaCliente {
   constructor(cliente) {

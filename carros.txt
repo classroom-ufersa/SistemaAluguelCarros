@@ -1,4 +1,5 @@
-, , , null, disponível
-, , , null, disponível
-, , , null, disponível
-, , , null, disponível
+Toyota, Corolla, ABC123, 2020, Disponível
+Honda, Civic, XYZ789, 2021, Disponível
+Ford, Focus, DEF456, 2019, Disponível
+Chevrolet, Cruze, GHI789, 2022, Disponível
+Nissan, Altima, JKL012, 2021, Disponível

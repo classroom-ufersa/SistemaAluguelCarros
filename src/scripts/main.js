@@ -59,7 +59,7 @@ const clienteList = new LinkedListCliente(); // Lista encadeada para armazenar o
 //const clienteArray = [];
 
 const carrosList = new LinkedListCarro(); // Lista encadeada para armazenar os carros
-//const carrosArray = []; 
+// const carrosArray = []; 
 
 window.addEventListener('load', () => {
     {
@@ -78,12 +78,12 @@ window.addEventListener('load', () => {
         fetch('clientes.txt')
             .then((response) => response.text())
             .then((data) => {
-                if (data.trim() !== '') { // Verificar se o conteúdo não está vazio
+                if (data.trim() !== '') {
                     preencherTabelaCliente();
                 }
             })
             .catch((error) => {
-                console.error('Erro ao buscar dados do arquivo "carros.txt":', error);
+                console.error('Erro ao buscar dados do arquivo "clientes.txt":', error);
             });
     }
 });
@@ -101,18 +101,6 @@ function criarCarro() {
     document.getElementById('modelo').value = '';
     document.getElementById('placa').value = '';
     document.getElementById('ano').value = '';
-    // carrosArray.push(carro); // Adicione o carro ao Array global
-    // console.log('Conteúdo da LinkedListCarro:', carrosList.toArray());
-    // carrosArray.forEach((carro, index) => {
-    //     console.log(`Carro ${index + 1}:`);
-    //     console.log(`Marca: ${carro.marca}`);
-    //     console.log(`Modelo: ${carro.modelo}`);
-    //     console.log(`Placa: ${carro.placa}`);
-    //     console.log(`Ano: ${carro.ano}`);
-    //     console.log(`Status: ${carro.status}`);
-    //     console.log('---');
-
-    // });
 }
 
 // Event listener para o botão "Enviar"
@@ -182,6 +170,18 @@ function criarCliente() {
     document.getElementById('nome').value = '';
     document.getElementById('sobrenome').value = '';
     document.getElementById('cnh').value = '';
+    // carrosArray.push(cliente); // Adicione o carro ao Array global
+    // console.log('Conteúdo da LinkedListCarro:', carrosList.toArray());
+    // carrosArray.forEach((cliente, index) => {
+    //     console.log(`Cliente ${cliente + 1}:`);
+    //     console.log(`id: ${cliente.id}`);
+    //     console.log(`nome: ${cliente.nome}`);
+    //     console.log(`sobrenome: ${cliente.sobrenome}`);
+    //     console.log(`cnh: ${cliente.cnh}`);
+    //     console.log(`Reserva?: ${cliente.possuiReserva}`);
+    //     console.log('---');
+
+    // });
 }
 
 // Event listener para o botão "Enviar"
@@ -196,14 +196,14 @@ document.getElementById('enviarCliente').addEventListener('click', (event) => {
 
     xhr.onload = function () {
         if (xhr.status === 200) {
-            alert('Dados do carro foram enviados com sucesso.');
+            alert('Dados do Cliente foram enviados com sucesso.');
         } else {
-            alert('Ocorreu um erro ao enviar os dados do carro.');
+            alert('Ocorreu um erro ao enviar os dados do Cliente.');
         }
     };
 
-    const carrosArray = carrosList.toArray();
-    xhr.send(JSON.stringify(carrosArray[carrosArray.length - 1])); // Enviar apenas o último carro adicionado
+    const clienteArray = clienteList.toArray();
+    xhr.send(JSON.stringify(clienteArray[clienteArray.length - 1])); // Enviar apenas o último carro adicionado
 });
 
 // Função para preencher a tabela com os dados do arquivo "carros.txt"
@@ -229,7 +229,6 @@ function preencherTabelaCliente() {
                     <td></td>
                     <td></td>
                 `;
-
                 tbody.appendChild(row);
 
             });
