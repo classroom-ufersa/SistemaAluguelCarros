@@ -59,15 +59,15 @@ const clienteList = new LinkedListCliente(); // Lista encadeada para armazenar o
 //const clienteArray = [];
 
 const carrosList = new LinkedListCarro(); // Lista encadeada para armazenar os carros
-// const carrosArray = []; 
+const carrosArray = []; 
 
 window.addEventListener('load', () => {
     {
-        // Verificar se o arquivo "carros.txt" não está vazio antes de preencher a tabela
+        
         fetch('carros.txt')
             .then((response) => response.text())
             .then((data) => {
-                if (data.trim() !== '') { // Verificar se o conteúdo não está vazio
+                if (data.trim() !== '') { 
                     preencherTabelaCarro();
                 }
             })
@@ -103,14 +103,13 @@ function criarCarro() {
     document.getElementById('ano').value = '';
 }
 
-// Event listener para o botão "Enviar"
+
 document.getElementById('enviarCarro').addEventListener('click', (event) => {
-    event.preventDefault(); // Impedir o comportamento padrão de envio do formulário
+    event.preventDefault(); 
     criarCarro();
 
-    // Enviar os dados para o servidor
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:3000/adicionarCarro', true); // Porta 3000, não 5500
+    xhr.open('POST', 'http://127.0.0.1:3000/adicionarCarro', true); 
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
     xhr.onload = function () {
@@ -122,16 +121,16 @@ document.getElementById('enviarCarro').addEventListener('click', (event) => {
     };
 
     const carrosArray = carrosList.toArray();
-    xhr.send(JSON.stringify(carrosArray[carrosArray.length - 1])); // Enviar apenas o último carro adicionado
+    xhr.send(JSON.stringify(carrosArray[carrosArray.length - 1])); 
 });
 
-// Função para preencher a tabela com os dados do arquivo "carros.txt"
+
 function preencherTabelaCarro() {
     const tabela = document.getElementById('tabelaCarros');
     const tbody = tabela.querySelector('tbody');
 
-    fetch('carros.txt') // URL do arquivo
-        .then((response) => response.text()) // Ler o conteúdo do arquivo como texto
+    fetch('carros.txt')
+        .then((response) => response.text()) 
         .then((data) => {
             const linhas = data.trim().split('\n');
             linhas.forEach((linha) => {
@@ -170,28 +169,27 @@ function criarCliente() {
     document.getElementById('nome').value = '';
     document.getElementById('sobrenome').value = '';
     document.getElementById('cnh').value = '';
-    // carrosArray.push(cliente); // Adicione o carro ao Array global
-    // console.log('Conteúdo da LinkedListCarro:', carrosList.toArray());
-    // carrosArray.forEach((cliente, index) => {
-    //     console.log(`Cliente ${cliente + 1}:`);
-    //     console.log(`id: ${cliente.id}`);
-    //     console.log(`nome: ${cliente.nome}`);
-    //     console.log(`sobrenome: ${cliente.sobrenome}`);
-    //     console.log(`cnh: ${cliente.cnh}`);
-    //     console.log(`Reserva?: ${cliente.possuiReserva}`);
-    //     console.log('---');
+    carrosArray.push(cliente); 
+    console.log('Conteúdo da LinkedListCarro:', carrosList.toArray());
+    carrosArray.forEach((cliente, index) => {
+        console.log(`Cliente ${cliente + 1}:`);
+        console.log(`id: ${cliente.id}`);
+        console.log(`nome: ${cliente.nome}`);
+        console.log(`sobrenome: ${cliente.sobrenome}`);
+        console.log(`cnh: ${cliente.cnh}`);
+        console.log(`Reserva?: ${cliente.possuiReserva}`);
+        console.log('---');
 
-    // });
+    });
 }
 
-// Event listener para o botão "Enviar"
+
 document.getElementById('enviarCliente').addEventListener('click', (event) => {
-    event.preventDefault(); // Impedir o comportamento padrão de envio do formulário
+    event.preventDefault(); 
     criarCliente();
 
-    // Enviar os dados para o servidor
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://127.0.0.1:3000/adicionarCliente', true); // Porta 3000, não 5500
+    xhr.open('POST', 'http://127.0.0.1:3000/adicionarCliente', true); 
     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
     xhr.onload = function () {
@@ -203,16 +201,15 @@ document.getElementById('enviarCliente').addEventListener('click', (event) => {
     };
 
     const clienteArray = clienteList.toArray();
-    xhr.send(JSON.stringify(clienteArray[clienteArray.length - 1])); // Enviar apenas o último carro adicionado
+    xhr.send(JSON.stringify(clienteArray[clienteArray.length - 1])); 
 });
 
-// Função para preencher a tabela com os dados do arquivo "carros.txt"
 function preencherTabelaCliente() {
     const tabela = document.getElementById('tabelaCliente');
     const tbody = tabela.querySelector('tbody');
 
-    fetch('clientes.txt') // URL do arquivo
-        .then((response) => response.text()) // Ler o conteúdo do arquivo como texto
+    fetch('clientes.txt') 
+        .then((response) => response.text()) 
         .then((data) => {
             const linhas = data.trim().split('\n');
             linhas.forEach((linha) => {
@@ -232,6 +229,7 @@ function preencherTabelaCliente() {
                 tbody.appendChild(row);
 
             });
+            quickSort(tbody);
         })
         .catch((error) => {
             console.error('Erro ao buscar dados do arquivo "carros.txt":', error);
@@ -250,3 +248,48 @@ function generateRandomID(length) {
 
     return randomID;
 }
+
+function quickSort(tbody) {
+    const clientes = Array.from(tbody.querySelectorAll('tr'));
+    clientes.sort((a, b) => {
+        const nomeA = a.cells[1].textContent;
+        const nomeB = b.cells[1].textContent;
+        return nomeA.localeCompare(nomeB);
+    });
+
+    tbody.innerHTML = '';
+
+    clientes.forEach((row) => {
+        tbody.appendChild(row);
+    });
+}
+
+function buscarNaTabela() {
+    const termoDeBusca = document.getElementById('barraDeBusca').value.toLowerCase(); 
+    const tabela = document.getElementById('tabelaCliente');
+    const linhas = tabela.getElementsByTagName('tr');
+
+    for (let i = 1; i < linhas.length; i++) {
+        const linha = linhas[i];
+        const celulas = linha.getElementsByTagName('td');
+        let corresponde = false;
+
+        for (let j = 0; j < celulas.length; j++) {
+            const celula = celulas[j];
+            const textoCelula = celula.textContent.toLowerCase();
+
+            if (textoCelula.includes(termoDeBusca)) {
+                corresponde = true;
+                break;
+            }
+        }
+
+        if (corresponde) {
+            linha.style.display = '';
+        } else {
+            linha.style.display = 'none';
+        }
+    }
+}
+
+document.getElementById('barraDeBusca').addEventListener('input', buscarNaTabela);

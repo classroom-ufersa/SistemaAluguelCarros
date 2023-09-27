@@ -5,9 +5,9 @@
       this.sobrenome = sobrenome;
       this.cnh = cnh;
       this.possuiReserva = 'Não'; 
-      this.carro = carro; // Carro associado ao cliente (pode ser nulo se não houver reserva)
-      this.valorReserva = valorReserva; // Valor da reserva (pode ser nulo se não houver reserva)
-      this.dataDevolucao = dataDevolucao; // Data de devolução (pode ser nulo se não houver reserva)
+      this.carro = carro;
+      this.valorReserva = valorReserva;
+      this.dataDevolucao = dataDevolucao; 
     }
   }
 
