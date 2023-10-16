@@ -1,18 +1,24 @@
 {
-  "name": "sistema_de_aluguel_de_carros",
+  "name": "proejto",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "fs": "^0.0.1-security",
-    "saas": "^1.0.0"
-  },
+  "main": "src/app.js",
   "scripts": {
-    "sass": "sass src/main.scss build/main.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass src/main.scss build/main.css --watch"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {}
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
+    "luxon": "^3.4.3",
+    "nodemon": "^2.0.14",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  },
+  "type": "module"
 }

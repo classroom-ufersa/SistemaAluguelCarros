@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./build/main.css">
+</head>
+
+<body>
+    <div class="d-flex container mt-5 mb-5">
+        <section id="nav-menu" class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <img src="./build/img/GO rent a car.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item ">
+                            <a class="nav-link" id="mostrarHome" href="index.html"><i
+                                    class="bi bi-house me-2"></i>Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="mostrarReservar" href="#"><i
+                                    class="bi bi-person-add me-2"></i>Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarCarros" href="carros.html"><i
+                                    class="bi bi-car-front me-2"></i>Carros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarClientes" href="clientes.html"><i
+                                    class="bi bi-people me-2"></i>Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <div class="w-100">
+            <section id="reservar" class="shadow-lg telas">
+                <div>
+                    <h2>Reservar carro</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="carro">Carro:</label>
+                            <input type="text" class="teste" id="carroReservar" placeholder="Modelo do carro" required
+                                autocomplete="off">
+                            <input type="text" class="teste" id="carroReservarModelo" placeholder="Modelo do carro" required
+                                style="display: none;">
+                            <div id="resultadosBusca"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="placa">Placa:</label>
+                            <input type="text" class="form-control" id="placaCarro" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="anoCarro" readonly style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente">Nome:</label>
+                            <input type="text" class="form-control" id="clienteReservar" placeholder="Nome do Cliente"
+                                required autocomplete="off">
+                            <input type="text" class="form-control" id="clienteReservarSobrenome"
+                                placeholder="Nome do Cliente" required style="display: none;">
+                            <div id="resultadosBuscaCliente"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cnh">CNH:</label>
+                            <input type="text" class="form-control" id="cnhCliente" readonly>
+                        </div>
+                        <div class="form-group d-flex">
+                            <div class="data">
+                                <label for="dataLocacao">Data da Locação:</label>
+                                <input type="date" class="form-control data" id="dataLocacao" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataEntrega">Data da Entrega:</label>
+                                <input type="date" class="form-control data2" id="dataEntrega" required>
+                                <span class="erro" id="erroMeuInput" style="display: none;">Esta é uma mensagem de
+                                    erro.</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="valorReserva">Valor total da reserva:</label>
+                            <h3 id="valorFinalReserva">R$ 0</h3>
+                        </div>
+                        <div class="form-group-button">
+                            <button type="submit" class="btn btn-primary" id="fazerReserva"
+                                name="fazerReserva">Finalizar reserva</button>
+                        </div>
+                    </form>
+                </div>
+                <table class="table" id="tabelaCarros" style="display: none;">
+                    <tr>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Placa</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Valor da Diaria</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Valor da reserva</th>
+                        <th scope="col">Total de dias</th>
+                        <th scope="col">Data devolução</th>
+                        <th scope="col" colspan="2" class="text-center">Ações</th>
+                    </tr>
+                    <tbody>
+                </table>
+                <table class="table" id="tabelaCliente" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sobrenome</th>
+                            <th scope="col">CNH</th>
+                            <th scope="col">Possui Reserva?</th>
+                            <th scope="col">Carro</th>
+                            <th scope="col">Placa</th>
+                            <th scope="col">Valor da resrva</th>
+                            <th scope="col">Total de Dias</th>
+                            <th scope="col">Data devolução</th>
+                            <th scope="col" colspan="2" class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <script type="module" src="reserva.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Code injected by live-server -->
+</body>
+
+</html>

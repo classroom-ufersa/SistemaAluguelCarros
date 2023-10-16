@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./build/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+</head>
+
+<body>
+    <div class="d-flex container mt-5 mb-5">
+        <section id="nav-menu" class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <img src="./build/img/GO rent a car.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item ">
+                            <a class="nav-link" id="mostrarHome" href="index.html"><i
+                                    class="bi bi-house me-2"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarReservar" href="reservar.html"><i
+                                    class="bi bi-person-add me-2"></i>Reservar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarCarros" href="carros.html"><i
+                                    class="bi bi-car-front me-2"></i>Carros</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="mostrarClientes" href="#"><i
+                                    class="bi bi-people me-2"></i>Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <div class="w-100">
+            <section id="clientes" class="shadow-lg telas">
+                <h2 class="mb-3">Clientes</h2>
+                <div class="d-flex justify-content-between">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="text" id="barraDeBuscaClientes"
+                            placeholder="Pesquisar">
+                    </form>
+                    <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal"
+                        data-target="#moldalClientes">
+                        Cadastrar Cliente
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="moldalClientes">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="clienteForm" action="http://localhost:3000/cliente" method="post">
+                                        <div class="form-group">
+                                            <label for="nome">Nome:</label>
+                                            <input type="text" class="form-control" id="nome" name="nome" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sobrenome">Sobrenome:</label>
+                                            <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cnh">cnh:</label>
+                                            <input type="text" class="form-control" id="cnh" name="cnh" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Fechar</button>
+                                            <button type="submit" class="btn btn-primary" id="enviarCliente"
+                                                name="enviarCliente">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="moldalClienteEdit">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="clienteFormEdit" action="http://localhost:3000/cliente" method="post">
+                                        <div class="form-group">
+                                            <label for="nomeAtualizado">Nome:</label>
+                                            <input type="text" class="form-control" id="nomeAtualizado" name="nomeAtualizado" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sobrenomeAtualizado">Sobrenome:</label>
+                                            <input type="text" class="form-control" id="sobrenomeAtualizado" name="sobrenomeAtualizado" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cnhAtualizada">cnh:</label>
+                                            <input type="text" class="form-control" id="cnhAtualizada" name="cnhAtualizada" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Fechar</button>
+                                            <button type="submit" class="btn btn-primary" id="enviarClienteEditado"
+                                                name="enviarClienteEditado">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proximasReservas">
+                    <h2>Todos os Clientes</h2>
+                    <table class="table" id="tabelaCliente">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Sobrenome</th>
+                                <th scope="col">CNH</th>
+                                <th scope="col">Possui Reserva?</th>
+                                <th scope="col">Carro</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Valor da resrva</th>
+                                <th scope="col">Total de Dias</th>
+                                <th scope="col">Data devolução</th>
+                                <th scope="col" colspan="2" class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script type="module" src="clientes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
+    <!-- Code injected by live-server -->
+</body>
+
+</html>

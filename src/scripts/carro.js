@@ -1,10 +1,11 @@
 export class Carro {
-    constructor(marca, modelo, placa, ano) {
+    constructor(marca, modelo, placa, ano, valor) {
         this.marca = marca;
         this.modelo = modelo;
         this.placa = placa;
         this.ano = ano;
         this.status = 'disponível';
+        this.valor = valor
     }
 };
 

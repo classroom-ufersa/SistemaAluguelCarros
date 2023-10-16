@@ -1,5 +1,7 @@
-Toyota, Corolla, ABC123, 2020, Disponível
-Honda, Civic, XYZ789, 2021, Disponível
-Ford, Focus, DEF456, 2019, Disponível
-Chevrolet, Cruze, GHI789, 2022, Disponível
-Nissan, Altima, JKL012, 2021, Disponível
+Toyota, Corolla, ABC123, 2020, Disponível, 200
+Honda, Civic, XYZ789, 2021, Disponível, 182
+Ford, Focus, DEF456, 2019, Disponível, 120
+Chevrolet, Cruze, GHI789, 2022, Disponível, 150
+Nissan, Altima, JKL012, 2021, Disponível, 187
+Fiat, Argo, 43523, 2012, disponível, 150
+VW , Gol, QWE32K, 2020, disponível, 50

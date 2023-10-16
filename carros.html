@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.17.0/dist/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./build/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+</head>
+
+<body>
+    <div class="d-flex container mt-5 mb-5">
+        <section id="nav-menu" class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#"> <img src="./build/img/GO rent a car.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarHome" href="index.html"><i
+                                    class="bi bi-house me-2"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarReservar" href="reservar.html"><i
+                                    class="bi bi-person-add me-2"></i>Reservar</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" id="mostrarCarros" href="#"><i
+                                    class="bi bi-car-front me-2"></i>Carros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="mostrarClientes" href="clientes.html"><i
+                                    class="bi bi-people me-2"></i>Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <div class="w-100">
+            <section id="carros" class="shadow-lg telas">
+                <h2 class="mb-3">Carros</h2>
+                <div class="d-flex justify-content-between">
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="text" id="barraDeBuscaCarro" placeholder="Pesquisar">
+                    </form>
+                    <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal" data-target="#myModal">
+                        Cadastrar Carro
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="carroForm" action="http://localhost:3000/carro" method="post">
+                                        <div class="form-group">
+                                            <label for="marca">Marca:</label>
+                                            <input type="text" class="form-control" id="marca" name="marca" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="modelo">Modelo:</label>
+                                            <input type="text" class="form-control" id="modelo" name="modelo" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="placa">Placa:</label>
+                                            <input type="text" class="form-control" id="placa" name="placa" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ano">Ano:</label>
+                                            <input type="text" class="form-control" id="ano" name="ano" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="valor">Valor da diária:</label>
+                                            <input type="text" class="form-control" id="valor" name="valor" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Fechar</button>
+                                            <button type="submit" class="btn btn-primary" id="enviarCarro"
+                                                name="enviarCarro">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="modalEdit">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Cabeçalho do Modal -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Formulário de Informações</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- Corpo do Modal -->
+                                <div class="modal-body">
+                                    <form id="carroFormEdit" action="http://localhost:3000/carro" method="put">
+                                        <div class="form-group">
+                                            <label for="marca">Marca:</label>
+                                            <input type="text" class="form-control" id="marcaAtualizada" name="marcaAtualizada" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="modelo">Modelo:</label>
+                                            <input type="text" class="form-control" id="modeloAtualizado" name="modeloAtualizado" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="placa">Placa:</label>
+                                            <input type="text" class="form-control" id="placaAtualizado" name="placaAtualizado"
+                                                readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ano">Ano:</label>
+                                            <input type="text" class="form-control" id="anoAtualizado" name="anoAtualizado" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="valor">Valor da diária:</label>
+                                            <input type="text" class="form-control" id="valorAtualizado" name="valorAtualizado" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Fechar</button>
+                                            <button type="submit" class="btn btn-primary" id="enviarCarroEditado"
+                                                name="enviarCarroEditado">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proximasReservas">
+                    <h2>Todos os carros</h2>
+                    <table class="table" id="tabelaCarros">
+                        <thead>
+                            <tr>
+                                <th scope="col">Marca</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Placa</th>
+                                <th scope="col">Ano</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Valor da Diaria</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Valor da reserva</th>
+                                <th scope="col">Total de dias</th>
+                                <th scope="col">Data devolução</th>
+                                <th scope="col" colspan="2" class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script type="module" src="carro.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+    <!-- Code injected by live-server -->
+</body>
+
+</html>

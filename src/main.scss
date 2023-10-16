@@ -114,7 +114,7 @@ button.close {
     background-color: transparent;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #1C252D !important;
     border-color: transparent !important;
 }
@@ -158,4 +158,80 @@ button.close {
         background-color: #E6E7EB;
         border-radius: 4px;
     }
+}
+
+.tamanho {
+    width: 10px;
+
+    button {
+        border: none;
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.opcao {
+
+    padding: 10px;
+
+}
+
+#resultadosBusca {
+    max-height: 100px;
+    /* Defina a altura máxima desejada */
+    overflow: auto;
+    /* Adiciona uma barra de rolagem quando necessário */
+    background-color: #E6E7EB;
+    border-radius: 0 0 10px 0;
+    z-index: 999;
+    margin-top: -5px;
+    :hover {
+        background-color: #fff;
+        border-left: 3px solid #1C252D;
+    }
+}
+
+.teste {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #dee2e6;
+    ;
+    border-radius: 0.375rem;
+
+}
+
+.teste:focus {
+    outline: none;
+    border-left: 3px solid #1C252D;
+    border-radius: 0px  0.375rem  0.375rem 0px
+
+}
+
+
+
+/* Estiliza a barra de rolagem */
+#resultadosBusca::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da barra de rolagem */
+}
+
+/* Estiliza o polegar da barra de rolagem */
+#resultadosBusca::-webkit-scrollbar-thumb {
+    background-color: #354655;
+    /* Cor de fundo do polegar */
+    border-radius: 6px;
+    /* Raio das bordas do polegar */
+}
+
+/* Estiliza a trilha da barra de rolagem */
+#resultadosBusca::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Cor de fundo da trilha */
 }

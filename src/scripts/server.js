@@ -7,14 +7,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors()); // Use o middleware CORS para permitir solicitações de origens diferentes
 
-const arquivoCarros = '../../carros.txt'; // Caminho absoluto completo para o arquivo
+const arquivoCarros = '../../carros.txt'; 
 const arquivoCliente = '../../clientes.txt';
+
 // Rota para receber os dados do formulário
 app.post('/adicionarCarro', (req, res) => {
-    const { marca, modelo, placa, ano, status } = req.body;
+    const { marca, modelo, placa, ano, status, valor } = req.body;
     const marcaModelo = `${marca}, ${modelo}`;
     // Formatar os dados em uma string de texto
-    const carroText = `${marcaModelo}, ${placa}, ${ano}, ${status}\n`;
+    const carroText = `${marcaModelo}, ${placa}, ${ano}, ${status}, ${valor}\n`;
 
     // Salvar os dados no arquivo de texto
     fs.appendFile(arquivoCarros, carroText, (err) => {
@@ -29,7 +30,7 @@ app.post('/adicionarCarro', (req, res) => {
 });
 
 app.post('/adicionarCliente', (req, res) => {
-    const { id, nome, sobrenome, cnh, possuiReserva } = req.body;
+    const { id, nome, sobrenome, cnh, possuiReserva} = req.body;
     const nomeCompleto = `${nome}, ${sobrenome}`;
                 
     // Formatar os dados em uma string de texto
