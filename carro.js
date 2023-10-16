@@ -76,7 +76,7 @@ function enviarCarrosBanco() {
 
     // Cria uma lista Carro com as informações coletadas
     const carro = new Carro(marca, modelo, placa, ano, valorDiaria, status, cliente, dataDevolucao, totalDias, valorReserva);
-
+    console.log(carro)
     // Envia a lista do carro para a função que faz o envio pro servidor
     postCarro(carro);
 }
@@ -391,9 +391,10 @@ document.getElementById('enviarCarro').addEventListener('click', function (e) {
     var modeloCampo = document.getElementById('modelo');
     var anoCampo = document.getElementById('ano');
     var valorCampo = document.getElementById("valor");
+    var valorPlaca = document.getElementById("placa");
 
     // Verifica se todos os campos passam na validação
-    if (marcaCampo.checkValidity() && modeloCampo.checkValidity() && anoCampo.checkValidity() && valorCampo.checkValidity()) {
+    if (marcaCampo.checkValidity() && modeloCampo.checkValidity() && anoCampo.checkValidity() && valorCampo.checkValidity() && valorPlaca.checkValidity()) {
         e.preventDefault(); // Impede o comportamento padrão do botão (neste caso, evitar o envio do formulário)
         enviarCarrosBanco(); // Chama a função para enviar o novo carro para o banco de dados
     }
