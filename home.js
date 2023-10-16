@@ -331,7 +331,7 @@ function getReservas(apiUrl) {
                         <td>${item.CNH}</td>
                         <td>${item.Status}</td>
                         <td>${item.Carro}</td>
-                        <td>${item.Placa}</td>
+                        <td style="display: none;">${item.Placa}</td>
                         <td>${item.valorReserva}</td>
                         <td>${item.totalDias}</td>
                         <td>${item.dataDevolucao}</td>
@@ -760,3 +760,63 @@ document.getElementById('atualizarData').addEventListener('click', function (e) 
     e.preventDefault()
     enviardataAtual()
 });
+
+document.getElementById('barraDeBuscaReserva').addEventListener('input', buscarCliente);
+
+function buscarCliente() {
+  // Obtém o termo de busca do campo de entrada e converte para letras minúsculas
+  const termoDeBusca = document.getElementById('barraDeBuscaReserva').value.toLowerCase();
+
+  // Obtém a tabela onde os resultados serão filtrados
+  const tabela = document.getElementById('tabelaReservas');
+
+  // Obtém todas as linhas da tabela
+  const linhas = tabela.getElementsByTagName('tr');
+
+  // Itera sobre as linhas a partir da segunda linha (índice 1) - a primeira linha contém os cabeçalhos
+  for (let i = 1; i < linhas.length; i++) {
+    const linha = linhas[i];
+
+    // Obtém todas as células da linha
+    const celulas = linha.getElementsByTagName('td');
+
+    // Inicialmente, assume que a linha corresponde ao termo de busca
+    let corresponde = true;
+
+    // Divide o termo de busca em palavras individuais
+    const termos = termoDeBusca.split(' ');
+
+    // Itera sobre cada termo de busca
+    for (let j = 0; j < termos.length; j++) {
+      const termo = termos[j];
+
+      // Inicialmente, assume que o termo foi encontrado em alguma célula da linha
+      let encontrado = false;
+
+      // Itera sobre todas as células da linha
+      for (let k = 0; k < celulas.length; k++) {
+        const celula = celulas[k];
+        const textoCelula = celula.textContent.toLowerCase();
+
+        // Verifica se o termo está presente na célula
+        if (textoCelula.includes(termo)) {
+          encontrado = true;
+          break;
+        }
+      }
+
+      // Se o termo não foi encontrado em nenhuma célula da linha, a linha não corresponde
+      if (!encontrado) {
+        corresponde = false;
+        break;
+      }
+    }
+
+    // Define a exibição da linha com base na correspondência do termo de busca
+    if (corresponde) {
+      linha.style.display = ''; // Exibe a linha
+    } else {
+      linha.style.display = 'none'; // Oculta a linha
+    }
+  }
+}
