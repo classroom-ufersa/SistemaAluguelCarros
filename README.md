@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este documento descreve o sistema de gerenciamento de aluguéis de carros, um aplicativo baseado em JavaScript que utiliza uma API CRUD com um banco de dados SQL para armazenar informações sobre carros e clientes. O sistema possui quatro telas principais: Home, Reservar, Carros e Clientes.
+O sistema de gerenciamento de aluguéis de carros é um aplicativo baseado em JavaScript que utiliza uma API CRUD com um banco de dados SQL para armazenar informações sobre carros e clientes. O sistema possui quatro telas principais: Home, Reservar, Carros e Clientes.
 
 ## Problema
 
