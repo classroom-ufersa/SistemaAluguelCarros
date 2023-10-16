@@ -521,7 +521,7 @@ $(document).ready(function () {
         }
       });
 
-      $('#modelo').on('input', function () {
+      $('#modeloAtualizado').on('input', function () {
         var modelo = $(this).val();
         var regex = /^[a-zA-ZÀ-ÿ0-9\s]*$/;
       
