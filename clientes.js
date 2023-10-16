@@ -461,13 +461,12 @@ $(document).ready(function () {
     var regex = /^[a-zA-ZÀ-ÿ\s]*$/;
 
     if (!regex.test(sobrenome)) {
-      // Se o sobrenome contiver caracteres inválidos, remova-os
+      // remopve e o sobrenome contiver caracteres inválidos
       $(this).val(sobrenome.replace(/[^a-zA-ZÀ-ÿ\s]/g, ''));
     }
   });
 });
 
-// Este trecho adiciona um ouvinte de evento ao campo CNH
 document.getElementById('cnh').addEventListener("input", function () {
   var valor = this.value;
 
