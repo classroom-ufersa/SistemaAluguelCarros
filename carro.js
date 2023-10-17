@@ -511,7 +511,7 @@ $(document).ready(function () {
       
         if (!regex.test(modelo)) {
           // Se o modelo contiver caracteres inválidos, remova-os
-           marca = marca.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '');
+          modelo = modelo.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '');
           $(this).val(modelo);
         }
       
@@ -528,7 +528,7 @@ $(document).ready(function () {
       
         if (!regex.test(modelo)) {
           // Se o modelo contiver caracteres inválidos, remova-os
-           marca = marca.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '');
+          modelo = modelo.replace(/[^a-zA-ZÀ-ÿ0-9\s]/g, '');
           $(this).val(modelo);
         }
       

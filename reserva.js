@@ -123,7 +123,7 @@ function tabelaCarro() {
             }
             return response.json();
         })
-        .then(data => { 
+        .then(data => {
             // Preencher a tabela com os dados da API
             data.forEach(item => {
                 const tr = document.createElement('tr');
@@ -333,6 +333,7 @@ buscaCarroInput.addEventListener("input", function () {
         }
     }
 
+    let teste = buscaCarroInput.value.length
     if (resultados.length > 0) {
         const resultadoHTML = resultados.map(resultado => `<div class="opcao">Carro: ${resultado.Marca} ${resultado.Modelo} Ano: ${resultado.ano} Placa: ${resultado.Placa}</div>`).join('');
         resultadosBusca.innerHTML = resultadoHTML;
@@ -349,16 +350,19 @@ buscaCarroInput.addEventListener("input", function () {
                 valorFinalDiaria = resultados[resultadoIndex].valorFloat;
                 dataInicio.disabled = false;
                 calcularValorFinal();
+                if (dataFim.value.trim() == '') {
+                    document.getElementById('valorFinalReserva').innerHTML = 'R$ 0'
+                }
             });
         });
     } else {
         resultadosBusca.innerHTML = "";
     }
-    let teste = buscaCarroInput.value.length
     if (buscaCarroInput.value.trim() !== teste) {
         placaInput.value = ""; // Define o valor de placaInput como vazio
         document.getElementById('valorFinalReserva').innerHTML = 'R$ 0'
-        botaoReserva.disabled = true;
+        // botaoReserva.disabled = true;
+        dataFim.value = '';
     }
 
 });
@@ -415,6 +419,7 @@ buscaClienteInput.addEventListener("input", function () {
     let teste = buscaClienteInput.value.length
     if (buscaClienteInput.value.trim() !== teste) {
         cnhInput.value = ""; // Define o valor de placaInput como vazio
+        // botaoReserva.disabled = true;
     }
 });
 
@@ -429,14 +434,14 @@ dataInicio.setAttribute('min', dataFormatada);
 
 dataInicio.addEventListener("change", function () {
     dataFim.setAttribute('min', dataInicio.value);
-  });
+});
 // Acessa os valores corretamente a partir do resultado
 var diferencaEmDias;
 var valorFinalReserva// diferencaEmDias;
 
 var botaoReserva = document.getElementById('fazerReserva');
 
-dataInicio.disabled = true;    
+dataInicio.disabled = true;
 dataFim.disabled = true;
 botaoReserva.disabled = true;
 // Função para calcular o valor final da reserva
@@ -460,14 +465,22 @@ function calcularValorFinal() {
         } else {
             // Exibir o valor final da reserva
             document.getElementById('valorFinalReserva').innerHTML = valorFinalReserva
-            botaoReserva.disabled = false;
+            // botaoReserva.disabled = false;
         }
         if (dataInicioValue > dataFimValue) {
-            botaoReserva.disabled = true;
+            // botaoReserva.disabled = true;
         }
     }
 }
+const form = document.getElementById('form');
 
+form.addEventListener('input', function () {
+    if (placaInput.value.trim() !== "" && dataFim.value.trim() !== "" && cnhInput.value.trim() !== "") {
+        botaoReserva.disabled = false;
+    } else {
+        botaoReserva.disabled = true;
+    }
+});
 
 // Associar a função de cálculo ao evento 'input' do campo 'dataEntrega'
 dataEntrega.addEventListener('input', calcularValorFinal);
@@ -477,7 +490,10 @@ dataEntrega.addEventListener('input', calcularValorFinal);
 document.getElementById('fazerReserva').addEventListener('click', function (e) {
     var marcaCampoAtualizada = document.getElementById('carroReservar');
     var modeloCampoAtualizada = document.getElementById('clienteReservar');
-    if (marcaCampoAtualizada.checkValidity() && modeloCampoAtualizada.checkValidity()) {
+    var modeloCampoPlaca = document.getElementById('placaCarro');
+    var modeloCampoCNH = document.getElementById('cnhCliente');
+
+    if (marcaCampoAtualizada.checkValidity() && modeloCampoAtualizada.checkValidity() && modeloCampoPlaca.checkValidity() && modeloCampoCNH.checkValidity()) {
         enviarResrvaBranco()
         e.preventDefault();
     }

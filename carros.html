@@ -50,7 +50,7 @@
                 <h2 class="mb-3">Carros</h2>
                 <div class="d-flex justify-content-between">
                     <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="text" id="barraDeBuscaCarro" placeholder="Pesquisar">
+                        <input class="form-control mr-sm-2" type="text" id="barraDeBuscaCarro" placeholder="Pesquisar"  autocomplete="off">
                     </form>
                     <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal" data-target="#myModal">
                         Cadastrar Carro
@@ -69,23 +69,23 @@
                                     <form id="carroForm" action="http://localhost:3000/carro" method="post">
                                         <div class="form-group">
                                             <label for="marca">Marca:</label>
-                                            <input type="text" class="form-control" id="marca" name="marca" required>
+                                            <input type="text" class="form-control" id="marca" name="marca" required  autocomplete="off" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="modelo">Modelo:</label>
-                                            <input type="text" class="form-control" id="modelo" name="modelo" required>
+                                            <input type="text" class="form-control" id="modelo" name="modelo" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="placa">Placa:</label>
-                                            <input type="text" class="form-control" id="placa" name="placa" required>
+                                            <input type="text" class="form-control" id="placa" name="placa" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="ano">Ano:</label>
-                                            <input type="text" class="form-control" id="ano" name="ano" required>
+                                            <input type="text" class="form-control" id="ano" name="ano" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="valor">Valor da diária:</label>
-                                            <input type="text" class="form-control" id="valor" name="valor" required>
+                                            <input type="text" class="form-control" id="valor" name="valor" required  autocomplete="off">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -111,11 +111,11 @@
                                     <form id="carroFormEdit" action="http://localhost:3000/carro" method="put">
                                         <div class="form-group">
                                             <label for="marca">Marca:</label>
-                                            <input type="text" class="form-control" id="marcaAtualizada" name="marcaAtualizada" required>
+                                            <input type="text" class="form-control" id="marcaAtualizada" name="marcaAtualizada" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="modelo">Modelo:</label>
-                                            <input type="text" class="form-control" id="modeloAtualizado" name="modeloAtualizado" required>
+                                            <input type="text" class="form-control" id="modeloAtualizado" name="modeloAtualizado" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="placa">Placa:</label>
@@ -124,11 +124,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ano">Ano:</label>
-                                            <input type="text" class="form-control" id="anoAtualizado" name="anoAtualizado" required>
+                                            <input type="text" class="form-control" id="anoAtualizado" name="anoAtualizado" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="valor">Valor da diária:</label>
-                                            <input type="text" class="form-control" id="valorAtualizado" name="valorAtualizado" required>
+                                            <input type="text" class="form-control" id="valorAtualizado" name="valorAtualizado" required  autocomplete="off">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"

@@ -329,9 +329,9 @@ function getReservas(apiUrl) {
                         <td>${item.Nome}</td>
                         <td>${item.Sobrenome}</td>
                         <td>${item.CNH}</td>
-                        <td>${item.Status}</td>
+                        <td style="display: none;">${item.Status}</td>
                         <td>${item.Carro}</td>
-                        <td style="display: none;">${item.Placa}</td>
+                        <td>${item.Placa}</td>
                         <td>${item.valorReserva}</td>
                         <td>${item.totalDias}</td>
                         <td>${item.dataDevolucao}</td>
@@ -689,7 +689,6 @@ function enviarReservaAtualizada() {
     var dataDevolucao
     var valorReserva
     var totalDias
-    alert(placaInput.value)
     getCarroReserva(placaInput.value)
         .then(carro => {
             console.log('Carro obtido:', carro);
@@ -704,7 +703,6 @@ function enviarReservaAtualizada() {
             totalDias = carro.totalDias
             var carroCliente = marca + ' ' + modelo;
             // Faça o que precisar fazer com os dados do carro aqui
-            alert(status)
             const carro2 = new Carro(marca, modelo, placa, ano, valorDiaria, statuscarro, cliente, dataDevolucao, totalDias, valorReserva)
             putCarro(carro2)
 
@@ -729,7 +727,6 @@ function enviarReservaAtualizada() {
 }
 
 function enviardataAtual() {
-    alert(placaData)
     getCarroReserva(placaData)
         .then(carro => {
             console.log('Carro obtido:', carro);

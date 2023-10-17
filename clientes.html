@@ -51,7 +51,7 @@
                 <div class="d-flex justify-content-between">
                     <form class="form-inline">
                         <input class="form-control mr-sm-2" type="text" id="barraDeBuscaClientes"
-                            placeholder="Pesquisar">
+                            placeholder="Pesquisar"  autocomplete="off">
                     </form>
                     <button type="button" class="btn btn-primary btnMoldal" data-toggle="modal"
                         data-target="#moldalClientes">
@@ -71,15 +71,15 @@
                                     <form id="clienteForm" action="http://localhost:3000/cliente" method="post">
                                         <div class="form-group">
                                             <label for="nome">Nome:</label>
-                                            <input type="text" class="form-control" id="nome" name="nome" required>
+                                            <input type="text" class="form-control" id="nome" name="nome" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="sobrenome">Sobrenome:</label>
-                                            <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+                                            <input type="text" class="form-control" id="sobrenome" name="sobrenome" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="cnh">cnh:</label>
-                                            <input type="text" class="form-control" id="cnh" name="cnh" required>
+                                            <input type="text" class="form-control" id="cnh" name="cnh" required  autocomplete="off">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -105,15 +105,15 @@
                                     <form id="clienteFormEdit" action="http://localhost:3000/cliente" method="post">
                                         <div class="form-group">
                                             <label for="nomeAtualizado">Nome:</label>
-                                            <input type="text" class="form-control" id="nomeAtualizado" name="nomeAtualizado" required>
+                                            <input type="text" class="form-control" id="nomeAtualizado" name="nomeAtualizado" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="sobrenomeAtualizado">Sobrenome:</label>
-                                            <input type="text" class="form-control" id="sobrenomeAtualizado" name="sobrenomeAtualizado" required>
+                                            <input type="text" class="form-control" id="sobrenomeAtualizado" name="sobrenomeAtualizado" required  autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <label for="cnhAtualizada">cnh:</label>
-                                            <input type="text" class="form-control" id="cnhAtualizada" name="cnhAtualizada" required>
+                                            <input type="text" class="form-control" id="cnhAtualizada" name="cnhAtualizada" required  autocomplete="off">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
